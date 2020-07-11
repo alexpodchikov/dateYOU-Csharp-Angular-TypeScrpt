@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   registerMode = false;
+  loginMode = false;
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,16 @@ export class HomeComponent implements OnInit {
     // tslint:disable-next-line: typedef
     cancelRegisterMode(registerMode: boolean){
       this.registerMode = registerMode;
+    }
+
+  // tslint:disable-next-line: typedef
+  loginToggle(){
+    this.loginMode = true;
+  }
+
+    // tslint:disable-next-line: typedef
+    cancelLoginMode(registerMode: boolean){
+      this.loginMode = registerMode;
     }
 
 }
