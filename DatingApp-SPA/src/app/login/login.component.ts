@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.model).subscribe(next => {
         console.log('Loggedin successfully');
       }, error => {
-        console.log('Failed to login');
+        console.log(error);
       });
     }
     // tslint:disable-next-line: typedef
