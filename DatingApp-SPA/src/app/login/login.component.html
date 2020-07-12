@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" (ngSubmit)="login()">
+<form #loginForm="ngForm" *ngIf="!loggedIn()" (ngSubmit)="login()">
   <h2 class="text-center text-primary">Sign In</h2>
   <hr>
 
@@ -11,7 +11,7 @@
   </div>
 
   <div class="form-group text-center">
-    <button class="btn btn-primary mr-2" type="submit">Login</button>
+    <button [disabled]="!loginForm.valid" class="btn btn-primary mr-2" type="submit">Login</button>
     <button class="btn btn-outline-dark" type="button" (click)="cancel()">Cancel</button>
   </div>
   

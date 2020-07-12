@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   @Output() cancelLogin = new EventEmitter();
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService) { }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
@@ -19,22 +20,20 @@ export class LoginComponent implements OnInit {
     // tslint:disable-next-line: typedef
     login(){
       this.authService.login(this.model).subscribe(next => {
-        console.log('Loggedin successfully');
+        this.alertify.success('Loggedin successfully');
       }, error => {
-        console.log(error);
+        this.alertify.error(error);
       });
     }
     // tslint:disable-next-line: typedef
     loggedIn(){
-      const token = localStorage.getItem('token');
-      // !!token return true or false
-      return !!token;
+      return this.authService.loggedIn();
     }
 
   // tslint:disable-next-line: typedef
   cancel(){
     this.cancelLogin.emit(false);
-    console.log('cancelled');
+    this.alertify.message('cancelled');
   }
 
 }
