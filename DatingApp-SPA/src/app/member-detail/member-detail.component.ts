@@ -7,10 +7,10 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from '@kolkov
 
 @Component({
   selector: 'app-member-details',
-  templateUrl: './member-details.component.html',
-  styleUrls: ['./member-details.component.css']
+  templateUrl: './member-detail.component.html',
+  styleUrls: ['./member-detail.component.css']
 })
-export class MemberDetailsComponent implements OnInit {
+export class MemberDetailComponent implements OnInit {
   user: User;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
@@ -19,7 +19,10 @@ export class MemberDetailsComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-    this.loadUser();
+    const usr = 'user';
+    this.route.data.subscribe(data => {
+      this.user = data[usr];
+    });
 
     this.galleryOptions = [
       {
@@ -48,13 +51,13 @@ export class MemberDetailsComponent implements OnInit {
     return imageUrls;
   }
 
-  // tslint:disable-next-line: typedef
-  loadUser() {
-    this.userService.getUser(this.route.snapshot.params.id).subscribe((user: User) => {
-      this.user = user;
-    }, error => {
-      this.alertify.error(error);
-    });
-  }
+  // // tslint:disable-next-line: typedef
+  // loadUser() {
+  //   this.userService.getUser(this.route.snapshot.params.id).subscribe((user: User) => {
+  //     this.user = user;
+  //   }, error => {
+  //     this.alertify.error(error);
+  //   });
+  // }
 
 }

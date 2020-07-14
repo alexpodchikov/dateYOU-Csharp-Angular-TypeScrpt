@@ -21,7 +21,10 @@ import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 import { MemberCardComponent } from './member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { MemberDetailsComponent } from './member-details/member-details.component';
+import { MemberDetailComponent } from './member-detail/member-detail.component';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberEditComponent } from './member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 // tslint:disable-next-line: typedef
 export function tokenGetter() {
@@ -46,7 +49,8 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
-      MemberDetailsComponent
+      MemberDetailComponent,
+      MemberEditComponent
    ],
    imports: [
       BrowserModule,
@@ -67,7 +71,9 @@ export class CustomHammerConfig extends HammerGestureConfig  {
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider
+      ErrorInterceptorProvider,
+      MemberDetailResolver,
+      MemberEditResolver
    ],
    bootstrap: [
       AppComponent
