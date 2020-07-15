@@ -25,6 +25,10 @@ import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { AlertifyService } from './_services/alertify.service';
+import { AuthGuard } from './_guards/auth.guard';
+import { UserService } from './_services/user.service';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 // tslint:disable-next-line: typedef
 export function tokenGetter() {
@@ -73,7 +77,11 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       AuthService,
       ErrorInterceptorProvider,
       MemberDetailResolver,
-      MemberEditResolver
+      MemberEditResolver,
+      AlertifyService,
+      AuthGuard,
+      UserService,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent
