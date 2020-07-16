@@ -17,7 +17,7 @@ namespace DatingApp.API.Data
         {
             // the "x => x.Username == username" lambda expression is telling us which user we looking for
             // "FirstOrDefaultAsync" is return null if user is't in DB and not exception
-           var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+           var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(x => x.Username == username);
 
            if(user == null)
            return null;
