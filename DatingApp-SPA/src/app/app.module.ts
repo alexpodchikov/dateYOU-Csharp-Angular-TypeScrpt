@@ -32,6 +32,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimeagoModule } from 'ngx-timeago';
 
 // tslint:disable-next-line: typedef
 export function tokenGetter() {
@@ -69,6 +70,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       BrowserAnimationsModule,
       NgxGalleryModule,
       BrowserAnimationsModule,
+      TimeagoModule.forRoot(),
       BsDatepickerModule.forRoot(),
       TabsModule.forRoot(),
       BsDropdownModule.forRoot(),
