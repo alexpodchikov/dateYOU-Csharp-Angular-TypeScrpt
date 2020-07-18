@@ -68,8 +68,8 @@ getMessages(id: number, page?: any, itemsPerPage?: any, messageContainer?: any) 
 
   return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', { observe: 'response', params}).pipe(
     map(response => { paginatedResult.result = response.body;
-
-                      if (response.headers.get('Pagination') !== null) {
+      // tslint:disable-next-line: align
+      if (response.headers.get('Pagination') !== null) {
           paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
       }
                       return paginatedResult;
@@ -84,7 +84,7 @@ getMessageThread(id: number, recipientId: number) {
 
 // tslint:disable-next-line: typedef
 sendMessage(id: number, message: Message) {
-  return this.http.post<Message>(this.baseUrl + 'users/' + id + '/messages', message);
+  return this.http.post(this.baseUrl + 'users/' + id + '/messages', message);
 }
 
 // tslint:disable-next-line: typedef

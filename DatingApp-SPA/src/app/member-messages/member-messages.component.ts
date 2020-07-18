@@ -24,7 +24,7 @@ export class MemberMessagesComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   loadMessages() {
-    const currentUserId = +this.authService.decodedToken.nameid;
+    // const currentUserId = +this.authService.decodedToken.nameid;
     this.userService.getMessageThread(this.authService.decodedToken.nameid, this.recipientId)
       // .do(messages => {
       //   _.each(messages, (message: Message) => {
@@ -44,7 +44,7 @@ export class MemberMessagesComponent implements OnInit {
   sendMessage() {
     this.newMessage.recipientId = this.recipientId;
     this.userService.sendMessage(this.authService.decodedToken.nameid, this.newMessage)
-      .subscribe(message => {
+      .subscribe((message: Message) => {
         this.messages.unshift(message);
         this.newMessage.content = '';
       }, error => {
