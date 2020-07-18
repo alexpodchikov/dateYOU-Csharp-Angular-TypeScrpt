@@ -23,6 +23,7 @@ import { MemberCardComponent } from './member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { AlertifyService } from './_services/alertify.service';
@@ -33,6 +34,7 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimeagoModule } from 'ngx-timeago';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 // tslint:disable-next-line: typedef
 export function tokenGetter() {
@@ -70,6 +72,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       BrowserAnimationsModule,
       NgxGalleryModule,
       BrowserAnimationsModule,
+      PaginationModule.forRoot(),
       TimeagoModule.forRoot(),
       BsDatepickerModule.forRoot(),
       TabsModule.forRoot(),
@@ -88,6 +91,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       ErrorInterceptorProvider,
       MemberDetailResolver,
       MemberEditResolver,
+      MemberListResolver,
       AlertifyService,
       AuthGuard,
       UserService,
