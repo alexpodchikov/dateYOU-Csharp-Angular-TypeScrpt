@@ -20,9 +20,11 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 import { MemberCardComponent } from './member-card/member-card.component';
+import { MemberMessagesComponent } from './member-messages/member-messages.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
@@ -61,7 +63,8 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      MemberMessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -95,7 +98,8 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       AlertifyService,
       AuthGuard,
       UserService,
-      PreventUnsavedChanges
+      PreventUnsavedChanges,
+      MessagesResolver
    ],
    bootstrap: [
       AppComponent

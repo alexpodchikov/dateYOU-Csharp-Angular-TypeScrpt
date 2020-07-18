@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../_models/User';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
+import { Message } from '../_models/message';
 
 @Injectable({
   providedIn: 'root'
@@ -54,4 +55,46 @@ sendLike(id: number, recipientId: number) {
   return this.http.post(this.baseUrl + 'users/' + id + '/like/' + recipientId, {});
 }
 
+// tslint:disable-next-line: typedef
+getMessages(id: number, page?: any, itemsPerPage?: any, messageContainer?: any) {
+  const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
+  let params = new HttpParams();
+  params = params.append('MessageContainer', messageContainer);
+
+  if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+  }
+
+  return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', { observe: 'response', params}).pipe(
+    map(response => { paginatedResult.result = response.body;
+
+                      if (response.headers.get('Pagination') !== null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+      }
+                      return paginatedResult;
+  })
+  );
+}
+
+// tslint:disable-next-line: typedef
+getMessageThread(id: number, recipientId: number) {
+  return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId);
+}
+
+// tslint:disable-next-line: typedef
+sendMessage(id: number, message: Message) {
+  return this.http.post<Message>(this.baseUrl + 'users/' + id + '/messages', message);
+}
+
+// tslint:disable-next-line: typedef
+deleteMessage(id: number, userId: number) {
+  return this.http
+      .post(this.baseUrl + 'users/' + userId + '/messages/' + id, {});
+}
+
+// tslint:disable-next-line: typedef
+markAsRead(userId: number, messageId: number) {
+  return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId + '/read', {}).subscribe();
+}
 }
