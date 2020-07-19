@@ -1,15 +1,12 @@
 <div class="container mt-5">
   <div class="row">
     <div class="btn-group">
-      <button class="btn btn-primary" [(ngModel)]="messageContainer" btnRadio="Unread" (click)="loadMessages()">
-        <i class="fa fa-envelope"></i> Unread
-      </button>
+      <button class="btn btn-primary" [(ngModel)]="messageContainer" ngDefaultControl btnRadio="Unread" (click)="loadMessages()">
+        <i class="fa fa-envelope"></i>Unread</button>
       <button class="btn btn-primary" [(ngModel)]="messageContainer" btnRadio="Inbox" (click)="loadMessages()">
-        <i class="fa fa-envelope-open"></i> Inbox
-      </button>
+        <i class="fa fa-envelope-open"></i>Inbox</button>
       <button class="btn btn-primary" [(ngModel)]="messageContainer" btnRadio="Outbox" (click)="loadMessages()">
-        <i class="fa fa-paper-plane"></i> Outbox
-      </button>
+        <i class="fa fa-paper-plane"></i>Outbox</button>
     </div>
   </div>
 
@@ -38,7 +35,7 @@
                 <strong>{{message.recipientKnownAs}}</strong>
           </div>
         </td>
-        <td>{{message.messageSent}}</td>
+        <td>{{message.messageSent | timeago}}</td>
         <td>
           <button class="btn btn-danger">Delete</button>
         </td>

@@ -56,9 +56,10 @@ sendLike(id: number, recipientId: number) {
 }
 
 // tslint:disable-next-line: typedef
-getMessages(id: number, page?: any, itemsPerPage?: any, messageContainer?: any) {
+getMessages(id: number, page?: any, itemsPerPage?: any, messageContainer?: string) {
   const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
   let params = new HttpParams();
+  console.log(messageContainer);
   params = params.append('MessageContainer', messageContainer);
 
   if (page != null && itemsPerPage != null) {
@@ -68,10 +69,9 @@ getMessages(id: number, page?: any, itemsPerPage?: any, messageContainer?: any) 
 
   return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages', { observe: 'response', params}).pipe(
     map(response => { paginatedResult.result = response.body;
-      // tslint:disable-next-line: align
-      if (response.headers.get('Pagination') !== null) {
-          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-      }
+                      if (response.headers.get('Pagination') !== null) {
+                           paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+                      }
                       return paginatedResult;
   })
   );

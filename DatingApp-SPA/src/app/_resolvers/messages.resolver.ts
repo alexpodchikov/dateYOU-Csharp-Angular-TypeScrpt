@@ -16,9 +16,9 @@ export class MessagesResolver implements Resolve<Message[]> {
 
     constructor(
         private userService: UserService,
+        private authService: AuthService,
         private router: Router,
-        private alertify: AlertifyService,
-        private authService: AuthService) {}
+        private alertify: AlertifyService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<Message[]> {
         return this.userService.getMessages(this.authService.decodedToken.nameid,
