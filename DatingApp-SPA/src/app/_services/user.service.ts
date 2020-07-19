@@ -89,8 +89,7 @@ sendMessage(id: number, message: Message) {
 
 // tslint:disable-next-line: typedef
 deleteMessage(id: number, userId: number) {
-  return this.http
-      .post(this.baseUrl + 'users/' + userId + '/messages/' + id, {});
+  return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + id, {});
 }
 
 // tslint:disable-next-line: typedef

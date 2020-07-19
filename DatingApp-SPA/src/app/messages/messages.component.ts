@@ -23,8 +23,8 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       const newLocal = 'messages';
-      this.messages = data['messages'].result;
-      this.pagination = data['messages'].pagination;
+      this.messages = data[newLocal].result;
+      this.pagination = data[newLocal].pagination;
     });
   }
 
@@ -58,4 +58,15 @@ export class MessagesComponent implements OnInit {
     this.loadMessages();
   }
 
+  // tslint:disable-next-line: typedef
+  deleteMessage(id: number) {
+    this.alertify.confirm('Are you sure you want to delete this message?', () => {
+      this.userService.deleteMessage(id, this.authService.decodedToken.nameid).subscribe(() => {
+        this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
+        this.alertify.success('Message has been deleted');
+      }, error => {
+        this.alertify.error('Failed to delete the message');
+      });
+    });
+  }
 }

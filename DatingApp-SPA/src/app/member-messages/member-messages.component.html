@@ -5,7 +5,7 @@
     </div>
     <ul class="chat">
       <li *ngFor="let message of messages">
-        <!-- to them -->
+         <!-- to them -->
         <div *ngIf="message.senderId == recipientId">
           <span class="chat-img float-left">
             <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle">
@@ -31,7 +31,7 @@
               <small class="text-muted">
                 <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
                 <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
-                <span class="message.isRead" class="text-success">(Read {{message.dateRead | timeago}})</span>
+                <span *ngIf="message.isRead" class="text-success">(Read {{message.dateRead | timeago}})</span>
               </small>
               <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
             </div>
@@ -45,15 +45,15 @@
     <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage()">
       <div class="input-group">
         <input 
+          [(ngModel)]="newMessage.content"
           type="text" 
           class="form-control input-sm"
           name="content"
           required
-          [(ngModel)]="newMessage.content"
           placeholder="Send a private message.">
-        <span class="input-group-btn">
+        <div class="input-group-append">
           <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
-        </span>
+        </div>
       </div>
     </form>
   </div>
