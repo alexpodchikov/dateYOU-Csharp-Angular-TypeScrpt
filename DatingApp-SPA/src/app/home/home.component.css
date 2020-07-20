@@ -1,0 +1,13 @@
+h1 {
+    font-family: 'Sacramento';
+    line-height: 1;
+}
+
+p {
+    line-height: 2;
+    font-weight: normal;
+}
+
+.btn{
+    width: 200px;
+}

@@ -38,6 +38,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimeagoModule } from 'ngx-timeago';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule  } from 'ngx-bootstrap/buttons';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 // tslint:disable-next-line: typedef
 export function tokenGetter() {
@@ -76,6 +77,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       BrowserAnimationsModule,
       NgxGalleryModule,
       BrowserAnimationsModule,
+      CollapseModule.forRoot(),
       ButtonsModule.forRoot(),
       PaginationModule.forRoot(),
       TimeagoModule.forRoot(),

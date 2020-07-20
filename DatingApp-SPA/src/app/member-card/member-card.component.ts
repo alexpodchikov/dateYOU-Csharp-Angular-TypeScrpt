@@ -17,13 +17,4 @@ export class MemberCardComponent implements OnInit {
   // tslint:disable-next-line: typedef
   ngOnInit() {
   }
-
-  // tslint:disable-next-line: typedef
-  sendLike(id: number) {
-    this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
-      this.alertify.success('You have liked: ' + this.user.knownAs);
-    }, error => {
-      this.alertify.error(error);
-    });
-  }
 }

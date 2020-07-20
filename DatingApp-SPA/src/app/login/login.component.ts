@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
     login(){
       // "next" is when requisted is successfull
       this.authService.login(this.model).subscribe(next => {
-        this.alertify.success('Loggedin successfully');
+        this.alertify.success('Logged In Successfully');
       }, error => {
-        this.alertify.error(error);
+        this.alertify.error('Incorrect Username/Password');
       }, () => {
         this.router.navigate(['/members']);
       });
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line: typedef
   cancel(){
     this.cancelLogin.emit(false);
-    this.alertify.message('cancelled');
+    this.alertify.message('Cancelled');
   }
 
 }

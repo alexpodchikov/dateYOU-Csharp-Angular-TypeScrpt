@@ -1,13 +1,15 @@
 <form #loginForm="ngForm" *ngIf="!loggedIn()" (ngSubmit)="login()">
   <h2 class="text-center text-primary">Sign In</h2>
   <hr>
-
-  <div class="form-group">
-    <input type="text" class="form-control" required  name="username" [(ngModel)]="model.username" placeholder="Username">
+  
+  <div class="form-group input-container">
+    <i class="fa fa-user icon"></i> 
+    <input type="text" class="form-control input-field" autocomplete="off" required  name="username" [(ngModel)]="model.username" placeholder="Username">
   </div>
 
-  <div class="form-group">
-    <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Password">
+  <div class="form-group input-container">
+    <i class="fa fa-key icon"></i>
+    <input type="password" class="form-control input-field" autocomplete="off" required name="password" [(ngModel)]="model.password" placeholder="Password">
   </div>
 
   <div class="form-group text-center">

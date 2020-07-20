@@ -1,0 +1,28 @@
+.input-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+.icon {
+    padding: 10px;
+    background: #45b4e9;
+    color: white;
+    min-width: 40px;
+    text-align: center;
+  }
+  
+.input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+  
+  h2 {
+    font-family: 'Sacramento';
+    line-height: 1;
+  }
+
+.btn{
+    width: 100px;
+}

@@ -29,7 +29,7 @@
           <div class="chat-body">
             <div class="header">
               <small class="text-muted">
-                <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
+                <span class="fa fa-clock-o"> {{message.messageSent | timeago}}</span>
                 <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
                 <span *ngIf="message.isRead" class="text-success">(Read {{message.dateRead | timeago}})</span>
               </small>
@@ -47,7 +47,8 @@
         <input 
           [(ngModel)]="newMessage.content"
           type="text" 
-          class="form-control input-sm"
+          class="form-control input-sm border-primary"
+          autocomplete="off"
           name="content"
           required
           placeholder="Send a private message.">

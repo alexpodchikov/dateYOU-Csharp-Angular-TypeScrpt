@@ -51,11 +51,6 @@ deletePhoto(userId: number, id: number) {
 }
 
 // tslint:disable-next-line: typedef
-sendLike(id: number, recipientId: number) {
-  return this.http.post(this.baseUrl + 'users/' + id + '/like/' + recipientId, {});
-}
-
-// tslint:disable-next-line: typedef
 getMessages(id: number, page?: any, itemsPerPage?: any, messageContainer?: string) {
   const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
   let params = new HttpParams();
