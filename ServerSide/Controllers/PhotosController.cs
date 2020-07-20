@@ -56,11 +56,6 @@ namespace ServerSide.Controllers
         public async Task<IActionResult> AddPhotoForUser(int userId, 
         [FromForm]PhotoForCreationDto photoForCreationDto)
         {
-            // var user = await _repo.GetUser(userId);
-
-            // if (user == null)
-            //     return BadRequest("Could not find user.");
-
 
              if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();

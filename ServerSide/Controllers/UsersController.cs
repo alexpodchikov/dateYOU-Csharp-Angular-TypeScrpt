@@ -52,18 +52,7 @@ namespace ServerSide.Controllers
              if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
                 
-            // if (!ModelState.IsValid)
-            //     return BadRequest(ModelState);
-
-            //var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
             var userFromRepo = await _repo.GetUser(id);
-
-            // if (userFromRepo == null)
-            //     return NotFound($"Could not find user with an ID of {id}");
-            
-            // if (currentUserId != userFromRepo.Id)
-            //     return Unauthorized();
 
             _mapper.Map(userForUpdateDto, userFromRepo);
 
